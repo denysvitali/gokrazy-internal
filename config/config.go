@@ -77,6 +77,12 @@ type UpdateStruct struct {
 	KeyPEM       string `json:",omitempty"` // key.pem
 }
 
+const (
+	TLSCertificateStorageRoot           = "root"
+	TLSCertificateStoragePerm           = "perm"
+	TLSCertificateStoragePermSelfSigned = "perm-self-signed"
+)
+
 func (u *UpdateStruct) WithFallbackToHostSpecific(host string) (*UpdateStruct, error) {
 	if u == nil {
 		u = &UpdateStruct{}
