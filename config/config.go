@@ -52,7 +52,7 @@ type UpdateStruct struct {
 
 	// TLSCertificateStorage can be one of:
 	//
-	// - empty (""), meaning use the certificate embedded in the root file system
+	// - empty (""), preserving the default behavior, currently equivalent to "root"
 	// - "root", meaning use the certificate embedded in the root file system
 	// - "perm", meaning use /perm/ssl and initialize it from the root file system if needed
 	// - "perm-self-signed", meaning generate a self-signed certificate in /perm/ssl if needed
