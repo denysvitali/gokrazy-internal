@@ -80,7 +80,8 @@ type UpdateStruct struct {
 type TLSCertificateStorage string
 
 const (
-	TLSCertificateStorageRoot           TLSCertificateStorage = "root"
+	TLSCertificateStorageDefault        TLSCertificateStorage = ""
+	TLSCertificateStorageRoot                                 = "root"
 	TLSCertificateStoragePerm                                 = "perm"
 	TLSCertificateStoragePermSelfSigned                       = "perm-self-signed"
 )
