@@ -56,7 +56,7 @@ type UpdateStruct struct {
 	// - "root", meaning use the certificate embedded in the root file system
 	// - "perm", meaning use /perm/ssl and initialize it from the root file system if needed
 	// - "perm-self-signed", meaning generate a self-signed certificate in /perm/ssl if needed
-	TLSCertificateStorage string `json:",omitempty"`
+	TLSCertificateStorage TLSCertificateStorage `json:",omitempty"`
 
 	// NoPassword, if true, prevents any password from being
 	// included in the image. Without a password, the only access
@@ -77,10 +77,12 @@ type UpdateStruct struct {
 	KeyPEM       string `json:",omitempty"` // key.pem
 }
 
+type TLSCertificateStorage string
+
 const (
-	TLSCertificateStorageRoot           = "root"
-	TLSCertificateStoragePerm           = "perm"
-	TLSCertificateStoragePermSelfSigned = "perm-self-signed"
+	TLSCertificateStorageRoot           TLSCertificateStorage = "root"
+	TLSCertificateStoragePerm           TLSCertificateStorage = "perm"
+	TLSCertificateStoragePermSelfSigned TLSCertificateStorage = "perm-self-signed"
 )
 
 func (u *UpdateStruct) WithFallbackToHostSpecific(host string) (*UpdateStruct, error) {
