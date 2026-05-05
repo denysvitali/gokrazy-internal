@@ -50,6 +50,14 @@ type UpdateStruct struct {
 	// - "self-signed", creating TLS certificates if needed
 	UseTLS string `json:",omitempty"` // -tls
 
+	// TLSCertificateStorage can be one of:
+	//
+	// - empty (""), meaning use the certificate embedded in the root file system
+	// - "root", meaning use the certificate embedded in the root file system
+	// - "perm", meaning use /perm/ssl and initialize it from the root file system if needed
+	// - "perm-self-signed", meaning generate a self-signed certificate in /perm/ssl if needed
+	TLSCertificateStorage string `json:",omitempty"`
+
 	// NoPassword, if true, prevents any password from being
 	// included in the image. Without a password, the only access
 	// will be over the serial console and the web interface will
@@ -74,8 +82,9 @@ func (u *UpdateStruct) WithFallbackToHostSpecific(host string) (*UpdateStruct, e
 		u = &UpdateStruct{}
 	}
 	result := UpdateStruct{
-		Hostname:   u.Hostname,
-		NoPassword: u.NoPassword,
+		Hostname:              u.Hostname,
+		NoPassword:            u.NoPassword,
+		TLSCertificateStorage: u.TLSCertificateStorage,
 	}
 
 	if u.HTTPPort != "" {
