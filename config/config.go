@@ -80,9 +80,9 @@ type UpdateStruct struct {
 type TLSCertificateStorage string
 
 const (
-	TLSCertificateStorageRoot           = "root"
-	TLSCertificateStoragePerm           = "perm"
-	TLSCertificateStoragePermSelfSigned = "perm-self-signed"
+	TLSCertificateStorageRoot           TLSCertificateStorage = "root"
+	TLSCertificateStoragePerm                                 = "perm"
+	TLSCertificateStoragePermSelfSigned                       = "perm-self-signed"
 )
 
 func (u *UpdateStruct) WithFallbackToHostSpecific(host string) (*UpdateStruct, error) {
